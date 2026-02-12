@@ -47,26 +47,73 @@
 // };
 
 
-$directory = "documents";
-$filename = $directory . '/report.txt';
+// $directory = "documents";
+// $filename = $directory . '/report.txt';
 
-if (!is_dir($directory)) {
-    if (mkdir($directory)) {
-        echo "Folder with name '$directory' is created <br>";
-    } else {
-        echo "Error created folder";
+// if (!is_dir($directory)) {
+//     if (mkdir($directory)) {
+//         echo "Folder with name '$directory' is created <br>";
+//     } else {
+//         echo "Error created folder";
+//     };
+// } else {
+//     echo "Folder '$directory' is a exists <br>";
+// };
+
+// $content = "Report for" . date('Y-m-d') . "\n";
+// $content .= "Report data..... \n";
+
+// if (file_put_contents($filename, $content) !== false) {
+//     echo "File '$filename' is created!";
+// } else {
+//     echo "Error file created";
+// };
+
+
+// $folderName = "test";
+
+// if(!file_exists($folderName)) {
+//     // 0777 - in PHP permissions on folder and file, write in 8cc
+//     // 4 - read, 2 - record, 1 - make
+//     mkdir($folderName, 0777, true);
+//     echo ("Folder '$folderName' is create \n");
+// } else {
+//     echo("Folder '$folderName' is created \n");
+// };
+
+
+// $oldFolderName = "test";
+// $newFolderName = "newTest";
+
+// if(file_exists($oldFolderName)) {
+//     rename($oldFolderName, $newFolderName);
+//     echo("Folder '$oldFolderName' rename to '$newFolderName' \n");
+// };
+
+
+function copyFolder($source, $dest) {
+    if(!file_exists($dest)) {
+        mkdir($dest, 0777, true);
     };
-} else {
-    echo "Folder '$directory' is a exists <br>";
+
+    $items = scandir($source);
+
+    foreach($items as $item) {
+        if($item != '.' && $item != '..') {
+            $sourcePath = $source . DIRECTORY_SEPARATOR . $item;
+            $destPath = $dest . DIRECTORY_SEPARATOR . $item;
+
+            if(is_dir($sourcePath)) {
+                copyFolder($sourcePath, $destPath);
+            } else {
+                copy($sourcePath, $destPath);
+            };
+        };
+    };
+
+    echo "Folder copy from '$source' to '$dest'";
 };
 
-$content = "Report for" . date('Y-m-d') . "\n";
-$content .= "Report data..... \n";
-
-if (file_put_contents($filename, $content) !== false) {
-    echo "File '$filename' is created!";
-} else {
-    echo "Error file created";
-};
+copyFolder('C:\Users\DzaurovUM24\Desktop\localhost\documents', 'C:\Users\DzaurovUM24\Desktop\localhost\newTest');
 
 ?>
