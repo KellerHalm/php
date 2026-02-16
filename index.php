@@ -91,29 +91,79 @@
 // };
 
 
-function copyFolder($source, $dest) {
-    if(!file_exists($dest)) {
-        mkdir($dest, 0777, true);
-    };
+// function copyFolder($source, $dest) {
+//     if(!file_exists($dest)) {
+//         mkdir($dest, 0777, true);
+//     };
 
-    $items = scandir($source);
+//     $items = scandir($source);
 
-    foreach($items as $item) {
-        if($item != '.' && $item != '..') {
-            $sourcePath = $source . DIRECTORY_SEPARATOR . $item;
-            $destPath = $dest . DIRECTORY_SEPARATOR . $item;
+//     foreach($items as $item) {
+//         if($item != '.' && $item != '..') {
+//             $sourcePath = $source . DIRECTORY_SEPARATOR . $item;
+//             $destPath = $dest . DIRECTORY_SEPARATOR . $item;
 
-            if(is_dir($sourcePath)) {
-                copyFolder($sourcePath, $destPath);
-            } else {
-                copy($sourcePath, $destPath);
-            };
-        };
-    };
+//             if(is_dir($sourcePath)) {
+//                 copyFolder($sourcePath, $destPath);
+//             } else {
+//                 copy($sourcePath, $destPath);
+//             };
+//         };
+//     };
 
-    echo "Folder copy from '$source' to '$dest'";
-};
+//     echo "Folder copy from '$source' to '$dest'";
+// };
 
-copyFolder('C:\Users\DzaurovUM24\Desktop\localhost\documents', 'C:\Users\DzaurovUM24\Desktop\localhost\newTest');
+// copyFolder('C:\Users\DzaurovUM24\Desktop\localhost\documents', 'C:\Users\DzaurovUM24\Desktop\localhost\newTest');
+
+
+// $source = "data.txt";
+// $newFolder = "documents/data.txt";
+
+// if(file_exists($source)) {
+//     if(rename($source, $newFolder)) {
+//         echo "File is move";
+//     } else {
+//         echo "Error with move";
+//     };
+// } else {
+//     echo "This file is not exists";
+// };
+
+
+// $file = "test.csv";
+
+// if(unlink($file)) {
+//     echo "FIle '{$file}' is delete";
+// } else {
+//     echo "Errro delete";
+// };
+
+
+// $files = [
+//     'file2.html',
+//     'file1.js',
+//     'file3.png'
+// ];
+
+// $deletedFiles = [];
+// $errors = [];
+// foreach($files as $file) {
+//     if(file_exists($file) && is_file($file)) {
+//         if(unlink($file)) {
+//             $deletedFiles[] = $file;
+//         } else {
+//             $errors[] = $file;
+//         };
+//     } else {
+//         $errors = "'$file' is not exists";
+//     };
+// };
+
+// echo "Delete: " . implode(', ', $deletedFiles) . "<br>";
+
+// if(!empty($errors)) {
+//     echo "Errors: " . implode(', ', $errors) . "<br>";
+// };
 
 ?>
