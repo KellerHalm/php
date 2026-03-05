@@ -1,14 +1,48 @@
 <?php
 
-    function Hello() {
-        return "Hello, World!";
+    
+    // Создание файла
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+        $file = $_POST['file'];
+
+        if (!file_exists($file)) {
+            $fileName = fopen($file, 'w');
+
+            if ($fileName) {
+                fclose($fileName);
+            };
+
+            echo "Создан файл с названием: $fileName<br>";
+        };
+
     };
 
-    $message = '';
+    // Удаление файла
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["delete"])) {
+        $file = $_POST['file'];
 
-    if (isset($_POST["action"]) && $_POST["action"] == 'go') {
-        $message = Hello();
-    };
+        if (file_exists($file)) {
+            unlink($file);
+            echo "Файл '$file' удален";
+        } else {
+            echo "Такого файла несуществует";
+        };
+    }
+
+    // Переименование файла
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["edit"])) {
+        $file = $_POST['file'];
+        $newFile = $_POST['newFile'];
+
+        if(!file_exists(filename: $newFile)) {
+            if (file_exists($file)) {
+                rename($file, $newFile);
+                echo "Файл переименован";
+            };
+        } else {
+            echo "This file is not exists";
+        };
+    }
 
 ?>
 
@@ -23,11 +57,14 @@
 </head>
 <body>
     <form method="post">
-        <button type="submit" name="action" value="go">Запустить функцию</button>
-    </form>
+        <input type="txt" name="file" placeholder="Введите название файла">
 
-    <?php if ($message): ?>
-        <p>Результат: <?php echo $message; ?></p>
-    <?php endif ?>
+        <button type="submit" name="submit" value="1">Создать файл</button>
+
+        <button type="submit" name="delete" value="1">Удалить файл</button>
+
+        <input type="txt" name="newFile" placeholder="Введите новое название файла">
+        <button type="submit" name="edit" value="1">Переименоать файл файл</button>
+    </form>
 </body>
 </html>
