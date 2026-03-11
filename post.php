@@ -31,18 +31,20 @@
 
     // Переименование файла
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["edit"])) {
-        $file = $_POST['file'];
-        $newFile = $_POST['newFile'];
+    $file = $_POST['file'];
+    $newFile = $_POST['newFile'];
 
-        if(!file_exists(filename: $newFile)) {
-            if (file_exists($file)) {
-                rename($file, $newFile);
-                echo "Файл переименован";
-            };
+    if (!file_exists($newFile)) {
+        if (file_exists($file)) {
+            rename($file, $newFile);
+            echo "Файл успешно переименован";
         } else {
-            echo "This file is not exists";
-        };
+            echo "Исходный файл не существует";
+        }
+    } else {
+        echo "Файл с таким именем уже существует";
     }
+}
 
 ?>
 
