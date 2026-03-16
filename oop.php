@@ -4,7 +4,7 @@
     // $person = new Person();
 
     // class Person {
-            
+
     // }
 
     // // $person = new Person();
@@ -57,7 +57,7 @@
     // echo $a === $b; // 0
     // echo $a == $b; // 1
 
-    
+
     // class Person {
     //     public $name, $age;
 
@@ -90,30 +90,142 @@
     // $person->displayInfo();
 
 
-    class Person
-    {
-        public $name, $age;
+    // class Person
+    // {
+    //     public $name, $age;
 
-        function __construct($name, $age)
-        {
-            $this->name = $name;
-            $this->age = $age;
-        }
+    //     function __construct($name, $age)
+    //     {
+    //         $this->name = $name;
+    //         $this->age = $age;
+    //     }
 
-        function getInfo() 
-        {
-            echo "Name: ".$this->name."<br> Age: ".$this->age."<br>";
-        }
+    //     function getInfo() 
+    //     {
+    //         echo "Name: ".$this->name."<br> Age: ".$this->age."<br>";
+    //     }
 
-        function __destruct()
-        {
-            echo "Destruct";
-        }
-    }
+    //     function __destruct()
+    //     {
+    //         echo "Destruct";
+    //     }
+    // }
 
-    $person = new Person("Uveis", 20);
+    // $person = new Person("Uveis", 20);
 
-    $person->getInfo();
+    // $person->getInfo();
+
+
+    // $person = new class {
+    //     public $name;
+
+    //     function sayHello() {
+    //         echo "Hello!<br>";
+    //     }
+    // };
+
+    // $person->sayHello();
+    // $person -> name = "Uveis";
+
+    // echo "Name: " . $person -> name . "<br>";
+
+
+    // class Person
+    // {
+    //     public $name;
+
+    //     function __construct($name)
+    //     {
+    //         $this->name = $name;
+    //     }
+
+    //     function displayInfo()
+    //     {
+    //         echo "Name: $this->name <br>";
+    //     }
+    // }
+
+    // class Employee extends Person
+    // {}
+
+    // $tom = new Employee("Tom");
+    // $tom -> displayInfo();
+
+
+    // class Person
+    // {
+    //     public $name;
+
+    //     function __construct($name)
+    //     {
+    //         $this->name = $name;
+    //     }
+
+    //     function displayInfo()
+    //     {
+    //         echo "Name: $this->name <br>";
+    //     }
+    // }
+
+    // class Employee extends Person
+    // {
+    //     function __construct($name)
+    //     {
+    //         parent::__construct($name);
+    //         $this->name = $name;
+    //     }
+
+    //     function displayInfo()
+    //     {
+    //         Person::displayInfo();
+    //         echo "Name: $this->name <br>";
+    //     }
+    // }
+
+    // class Manager 
+    // {}
+
+    // $tom = new Employee("Tom");
+    // // $tom -> displayInfo();
+
+
+    // $tom instanceof Employee;
+    // $tom instanceof Person;
+    // $tom instanceof Manager;
+
+
+    // class Person
+    // {
+    //     public $name;
+
+    //     function __construct($name)
+    //     {
+    //         $this->name = $name;
+    //     }
+
+    //     final function displayInfo()
+    //     {
+    //         echo "Name: $this->name <br>";
+    //     }
+    // }
+
+    // class Employee extends Person
+    // {
+    //     function __construct($name)
+    //     {
+    //         parent::__construct($name);
+    //         $this->name = $name;
+    //     }
+
+    //     function displayEmployeeInfo() // displayInfo будет ошибка из-за final
+    //     {
+    //         Person::displayInfo();
+    //         echo "Name: $this->name <br>";
+    //     }
+    // }
+
+    // final class Manager // не наследуется из-за final
+    // {} 
 
 
 ?>
